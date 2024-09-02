@@ -14,12 +14,14 @@ class Solution {
     int missingNumber(int n, vector<int>& arr) {
 
         // Your code goes here
-        int sum= n*(n+1)/2;
-        int sum2=0;
-        for(int i=0;i<n-1;i++){
-            sum2 += arr[i];
+        int sum = n * (n + 1) / 2;
+        int sum_arr = 0;
+        
+        for (int i = 0; i < arr.size(); i++) {
+            sum_arr += arr[i];
         }
-        int missing = sum -sum2;
+        
+        int missing = sum - sum_arr;
         return missing;
     }
 };
