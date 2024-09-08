@@ -3,32 +3,31 @@
 
 using namespace std;
 
+
 // } Driver Code Ends
-//User function template for C++
-class Solution{
-public:	
-	// Function returns the second
-	// largest elements
-	int print2largest(int arr[], int n) {
-	    // code here
-	int max_1 = -1;
-    int second_max = -1;
-    for (int i = 0; i < n; i++)
-    {
-        if (max_1 < arr[i])
-        {
-            max_1 = arr[i];
+// User function template for C++
+class Solution {
+  public:
+    // Function returns the second
+    // largest elements
+    int print2largest(vector<int> &arr) {
+        // Code Here
+        int n=arr.size();
+        int max=arr[0];
+        int mx_2=-1;
+        for(int i=0;i<n;i++){
+            if(max<arr[i]){
+                max=arr[i];
+            }
         }
-    }
-    for (int i = 0; i < n; i++)
-    {
-        if (max_1 != arr[i])
-        {
-            second_max = max(second_max, arr[i]);
+        for (int i = 0; i < n; i++) {
+            if (arr[i] > mx_2 && arr[i] < max) {
+                mx_2 = arr[i];
+            }
         }
+
+        return mx_2;
     }
-    return second_max;
-	}
 };
 
 //{ Driver Code Starts.
@@ -36,16 +35,19 @@ public:
 int main() {
     int t;
     cin >> t;
+    cin.ignore();
     while (t--) {
-        int n;
-        cin >> n;
-        int arr[n];
-        for (int i = 0; i < n; i++) {
-            cin >> arr[i];
+        vector<int> arr;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
         }
         Solution ob;
-        auto ans = ob.print2largest(arr, n);
-        cout << ans << "\n";
+        int ans = ob.print2largest(arr);
+        cout << ans << endl;
     }
     return 0;
 }
