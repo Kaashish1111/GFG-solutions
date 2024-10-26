@@ -11,8 +11,8 @@ class Solution {
         if(N==0){
             return;
         }
+        cout << "GFG ";
         printGfg(N-1);
-        cout<< "GFG" << " ";
     }
 };
 
@@ -34,7 +34,9 @@ int main() {
         // calling printNos() function
         ob.printGfg(N);
         cout << "\n";
-    }
+    
+cout << "~" << "\n";
+}
     return 0;
 }
 
