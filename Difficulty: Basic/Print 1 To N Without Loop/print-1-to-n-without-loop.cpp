@@ -10,15 +10,10 @@ class Solution{
     void printNos(int N)
     {
         //Your code here
-                // Base case: if N is less than 1, stop recursion
-        if (N == 0) {
+        if(N==0){
             return;
         }
-        
-        // Recursive call: first print numbers from 1 to N-1
-        printNos(N - 1);
-        
-        // Then print N after the recursive call
+        printNos(N-1);
         cout << N << " ";
     }
 };
@@ -42,7 +37,9 @@ int main()
         //calling printNos() function
         ob.printNos(N);
         cout << "\n";
-    }
+    
+cout << "~" << "\n";
+}
     return 0;
 }
 
