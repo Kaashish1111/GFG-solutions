@@ -10,11 +10,11 @@ class Solution {
   public:
     long long sumOfSeries(long long n) {
         // code here
-        // Base case: when n reaches 1, the sum is 1^3 = 1
-        if (n == 0)
-            return 0;
-        // Recursive case: return n^3 + sum of cubes of all numbers till (n-1)
-        return (n * n * n) + sumOfSeries(n - 1);
+        long long cubesum=0;
+        for(long long i=1;i<=n;i++){
+            cubesum += i*i*i;
+        }
+        return cubesum;
     }
 };
 
@@ -27,6 +27,8 @@ int main() {
         cin >> N;
         Solution ob;
         cout << ob.sumOfSeries(N) << "\n";
-    }
+    
+cout << "~" << "\n";
+}
 }
 // } Driver Code Ends
