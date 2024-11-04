@@ -14,9 +14,10 @@ class Solution {
     // k : find kth smallest element and return using this function
     int kthSmallest(vector<int> &arr, int k) {
         // code here
-        sort(arr.begin(), arr.end());
-        // Return the k-th smallest element
-        return arr[k - 1];
+        sort(arr.begin(),arr.end());
+        int n=arr.size();
+        int ele=arr[k-1];
+        return ele;
     }
 };
 
@@ -46,7 +47,7 @@ int main() {
         k = crr[0];
         int n = arr.size();
         Solution ob;
-        cout << ob.kthSmallest(arr, k) << endl;
+        cout << ob.kthSmallest(arr, k) << endl << "~\n";
     }
     return 0;
 }
