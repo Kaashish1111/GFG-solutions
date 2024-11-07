@@ -5,17 +5,16 @@ using namespace std;
 
 // } Driver Code Ends
 /*You are required to complete this function*/
-
-// Brute Force ->time limit exceed
+// brute
 // class Solution {
 //   public:
 //     int maxLen(vector<int>& arr) {
 //         // code here
 //         int n=arr.size();
-//         int maxi=INT_MIN;
-//         int sum=0;
+//         int maxi=0;
 //         for(int i=0;i<n;i++){
-//             for(int j=i+1;j<n;j++){
+//             int sum=0;
+//             for(int j=i;j<n;j++){
 //                 sum += arr[j];
 //                 if(sum==0){
 //                     maxi=max(j+1-i,maxi);
@@ -25,37 +24,33 @@ using namespace std;
 //         return maxi;
 //     }
 // };
-
-// optimal approch
+// best
 class Solution {
-public:
+  public:
     int maxLen(vector<int>& arr) {
-        int n = arr.size();
-        unordered_map<int, int> sumIndexMap; // Map to store the first occurrence of each cumulative sum
+        // code here
+        unordered_map<int, int> mpp; 
         int maxi = 0;
-        int sum = 0;
+        int sum = 0; 
 
-        for (int i = 0; i < n; i++) {
-            sum += arr[i]; // Update cumulative sum
+        for(int i = 0; i < arr.size(); i++) {
+          sum += arr[i]; 
 
-            // If sum is 0, then subarray from 0 to i has a zero sum
-            if (sum == 0) {
-                maxi = i + 1;
+           if (sum == 0) {
+               maxi = i + 1;  // The whole subarray from 0 to i has a sum of 0
             }
-
-            // If this cumulative sum has been seen before, it means there's a zero-sum subarray
-            if (sumIndexMap.find(sum) != sumIndexMap.end()) {
-                maxi = max(maxi, i - sumIndexMap[sum]);
-            } else {
-                // Store the index of the first occurrence of this cumulative sum
-                sumIndexMap[sum] = i;
-            }
+            else {
+               if (mpp.find(sum) != mpp.end()) {
+                   maxi = max(maxi, i - mpp[sum]);  // Find the length of the subarray with sum = 0
+                }
+                else {
+                   mpp[sum] = i;  // Store the index of this sum
+                }
+            }   
         }
-
-        return maxi;
+        return maxi; 
     }
 };
-
 
 
 
@@ -79,6 +74,7 @@ int main() {
 
         Solution obj;
         cout << obj.maxLen(a) << endl;
+        cout << "~\n";
     }
 
     return 0;
